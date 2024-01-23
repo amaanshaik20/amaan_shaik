@@ -65,6 +65,9 @@
                         </div>
                         
                     </div>
+                    <div class="row">
+                        <p>Site Viewers: <span id="viewersCount"></span></p>
+                    </div>
                 </div>
             </section>
             <!-- ===== About Section Start ===== -->
@@ -516,6 +519,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/style-switcher.js"></script>
+
+    <script>
+        function updateViewersCount() {
+            if (localStorage.getItem('viewersCount') === null) {
+               
+                localStorage.setItem('viewersCount', 1);
+            } else {
+                localStorage.setItem('viewersCount', parseInt(localStorage.getItem('viewersCount')) + 1);
+            }
+
+            document.getElementById('viewersCount').textContent = localStorage.getItem('viewersCount');
+        }
+
+        updateViewersCount();
+
+        setInterval(updateViewersCount, 60000); 
+    </script>
 </body>
 
 </html>
